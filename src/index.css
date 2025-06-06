@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-bg box-border;
+  }
+
+  .page_layout {
+    @apply max-w-[96%]  w-[1200px] mx-auto;
+  }
+}
