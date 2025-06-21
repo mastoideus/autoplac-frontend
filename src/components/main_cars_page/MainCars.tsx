@@ -16,13 +16,7 @@ interface MainCarsProps {
   pages: number;
 }
 
-const MainCars = ({
-  cars,
-  hasMore,
-  currentPage,
-  totalCount,
-  pages,
-}: MainCarsProps) => {
+const MainCars = ({ cars, currentPage, totalCount, pages }: MainCarsProps) => {
   const [layout, setLayout] = useState("grid");
   const [showFilters, setShowFilters] = useState(true);
 

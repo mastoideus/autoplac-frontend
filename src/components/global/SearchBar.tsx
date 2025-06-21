@@ -8,7 +8,7 @@ import customFetch from "@/axios";
 import { CgSearchLoading } from "react-icons/cg";
 import { queryClient } from "@/axios/queryClient";
 import { Link } from "react-router";
-import { useLocation, useSearchParams, useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 
 type SearchBarProps = {
   placeholder?: string;

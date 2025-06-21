@@ -27,7 +27,7 @@ const CompareCarsContext = createContext<{
   addComparationCar: (car: Car) => void;
 }>({
   comparationCars: [],
-  addComparationCar: (car) => {},
+  addComparationCar: () => {},
 });
 
 export const CompareCarsContextProvider = ({

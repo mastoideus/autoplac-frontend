@@ -41,13 +41,6 @@ export default function ImageCarousel({ slides }: Props) {
     updateSelected();
   };
 
-  const getThumbnailUrl = (url: string, width = 200, height?: number) => {
-    const baseUrl = url.replace("/object/", "/render/image/");
-    const sizeParams = height
-      ? `width=${width}&height=${height}`
-      : `width=${width}`;
-    return `${baseUrl}?${sizeParams}`;
-  };
   return (
     <div className="space-y-4 ">
       {/* Main carousel */}

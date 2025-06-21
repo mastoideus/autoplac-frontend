@@ -42,7 +42,7 @@ const MultiSelect = ({
         onChange={(
           selected: MultiValue<OptionType>,
           _actionMeta: ActionMeta<OptionType>
-        ) => onChange(name, [...selected])}
+        ) => onChange?.(name, [...selected])}
         styles={{
           placeholder: (base) => ({
             ...base,

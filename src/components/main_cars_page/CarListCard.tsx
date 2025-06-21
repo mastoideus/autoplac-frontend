@@ -1,4 +1,3 @@
-import React from "react";
 import { useCompareCarsContext } from "@/lib/context/compareCars";
 import { calcTimePast } from "@/lib/utils";
 import { Button } from "../ui/button";

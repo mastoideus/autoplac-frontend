@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-const Logo = ({ bigLogo }: { bigLogo: boolean }) => {
+const Logo = ({ bigLogo }: { bigLogo?: boolean }) => {
   return (
     <Link to="/">
       <svg
