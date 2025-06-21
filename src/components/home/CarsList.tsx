@@ -7,26 +7,20 @@ import { FaArrowDown } from "react-icons/fa6";
 import { Loader2 } from "lucide-react";
 
 const CarsList = () => {
-  const {
-    data,
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
-    isLoading,
-    isError,
-  } = useInfiniteQuery({
-    queryKey: ["cars"],
-    queryFn: fetchAllCars,
-    initialPageParam: 1,
-    getNextPageParam: (lastPage) => {
-      return lastPage.hasMore ? lastPage.currentPage + 1 : undefined;
-    },
-  });
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
+    useInfiniteQuery({
+      queryKey: ["cars"],
+      queryFn: fetchAllCars,
+      initialPageParam: 1,
+      getNextPageParam: (lastPage) => {
+        return lastPage.hasMore ? lastPage.currentPage + 1 : undefined;
+      },
+    });
 
   if (!data) {
     return <div>Could not fetch data</div>;
   }
-  console.log(data.pages);
+
   return (
     <>
       <ListWrapper
@@ -57,6 +51,7 @@ const CarsList = () => {
 
                 return (
                   <CarCard
+                    key={id}
                     brand={brandName}
                     model={modelName}
                     fuelType={fuelType}

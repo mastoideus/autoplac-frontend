@@ -21,9 +21,19 @@ const BrandsStoresList = () => {
           " grid grid-cols-2 gap-y-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-x-4"
         }
       >
-        {function (item: { count: number; logo: string; name: string }) {
+        {function (item: {
+          count: number;
+          logo: string;
+          name: string;
+          _id: string;
+        }) {
           return (
-            <SmallCard count={item.count} logo={item.logo} name={item.name} />
+            <SmallCard
+              key={item._id}
+              count={item.count}
+              logo={item.logo}
+              name={item.name}
+            />
           );
         }}
       </ListWrapper>
@@ -36,9 +46,19 @@ const BrandsStoresList = () => {
           " grid grid-cols-2 gap-y-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-x-4"
         }
       >
-        {function (item: { count: number; logo: string; name: string }) {
+        {function (item: {
+          count: number;
+          logo: string;
+          name: string;
+          _id: string;
+        }) {
           return (
-            <SmallCard count={item.count} logo={item.logo} name={item.name} />
+            <SmallCard
+              key={item._id}
+              count={item.count}
+              logo={item.logo}
+              name={item.name}
+            />
           );
         }}
       </ListWrapper>

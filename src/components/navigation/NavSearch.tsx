@@ -2,6 +2,7 @@ import { FaHandsHelping } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 import IconButton from "../global/IconButton";
 import SearchBar from "../global/SearchBar";
+import { Link } from "react-router";
 
 const NavSearch = () => {
   return (
@@ -24,7 +25,9 @@ const NavSearch = () => {
           tooltipText="Treba vam pomoć da pronađete odgovarajuće vozilo?"
           size="icon"
         >
-          <FaCartShopping color="white" />
+          <Link to="/help-search">
+            <FaCartShopping color="white" />
+          </Link>
         </IconButton>
       </div>
     </div>
@@ -32,20 +35,3 @@ const NavSearch = () => {
 };
 
 export default NavSearch;
-
-/*<div className=" flex items-center h-[100%]">
-<Input
-  type="text"
-  placeholder="Audi A3"
-  name="search"
-  id="search"
-  className="  border border-gray-200 h-[100%] rounded-r-none w-full sm:w-64"
-/>
-<Button
-  size="icon"
-  className="h-[100%] rounded-l-none w-12  bg-blue-900"
->
-  <IoMdSearch color="white" />
-</Button>
-</div>
-*/

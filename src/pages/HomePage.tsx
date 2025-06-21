@@ -8,6 +8,7 @@ import SuspenseErrorFallback from "@/components/global/SuspenseErrorFallback";
 import fetchAllCars from "@/axios/fetchFunctions/fetchAllCars";
 import CarsList from "@/components/home/CarsList";
 import HomeInfo from "@/components/home/HomeInfo";
+import { useAuthContext } from "@/lib/context/authContext";
 
 export const loader = async () => {
   await queryClient.prefetchQuery({
@@ -24,6 +25,8 @@ export const loader = async () => {
 };
 
 const HomePage = () => {
+  const { authData } = useAuthContext();
+  console.log(authData.accessToken, authData.userData);
   return (
     <>
       <Hero />

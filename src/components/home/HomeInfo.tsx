@@ -1,10 +1,9 @@
-import React from "react";
 import mrezeImage from "@/assets/images/mreze.png";
 
 const HomeInfo = () => {
   return (
     <div className="text-center">
-      <h2 className=" text-lg md:text-4xl font-semibold ">
+      <h2 className=" text-xl md:text-4xl font-semibold ">
         Kako funkcioniše AutoPlac
       </h2>
       <div className=" w-24 h-[3px] bg-primary text-center mx-auto my-4"></div>
