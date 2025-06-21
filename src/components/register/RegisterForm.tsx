@@ -11,7 +11,6 @@ import useInput from "@/lib/hooks/useInput";
 import { useMutation } from "@tanstack/react-query";
 import customFetch from "@/axios";
 import { toast } from "sonner";
-import { Loader2 } from "lucide-react";
 import { useNavigate } from "react-router";
 import Spinner from "../global/LoadingSpinner.tsx";
 
@@ -63,7 +62,7 @@ const RegisterForm = () => {
     validationData: confirmedPasswordValidationData,
   } = useInput("password");
 
-  function handleShowPassword(passwordName: string) {
+  function handleShowPassword(passwordName: "password" | "confirmedPassword") {
     setShowPasswords((prevState) => ({
       ...prevState,
       [passwordName]: !prevState[passwordName],

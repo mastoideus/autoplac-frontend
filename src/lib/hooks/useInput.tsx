@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useDebouncedCallback } from "use-debounce";
 
 function validateInput(type: string, value: string) {
   let isValid = true;
@@ -47,7 +46,7 @@ const useInput = (type: string) => {
   const validationData = validateInput(type, inputValue);
   const isInvalid = inputIsTouched && !validationData?.isValid;
 
-  const inputChangeHandler = (e) => {
+  const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log("input changed");
     setInputValue(e.target.value);
   };

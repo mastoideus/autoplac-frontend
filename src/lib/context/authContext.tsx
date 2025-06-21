@@ -6,11 +6,29 @@ export const setUserDataToLocalStorage = (userData: any) => {
   localStorage.setItem("userData", JSON.stringify(userData));
 };
 const getUserDataFromLocalStorage = () => {
-  const userData = JSON.parse(localStorage.getItem("userData")) || null;
+  const userDataStr = localStorage.getItem("userData");
+  const userData = userDataStr ? JSON.parse(userDataStr) : null;
   return userData;
 };
 
-const AuthContext = createContext({});
+type UserDataType = {
+  [key: string]: any;
+};
+
+type AuthContextType = {
+  authData: {
+    userData: UserDataType | null;
+    accessToken: string;
+  };
+  isAuthTokenError: boolean;
+  isAuthTokenLoading: boolean;
+  loginHandler: (authData: {
+    userData: UserDataType;
+    accessToken: string;
+  }) => void;
+};
+
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthContextProvider = ({
   children,
@@ -69,6 +87,10 @@ export const AuthContextProvider = ({
   );
 };
 
-export const useAuthContext = () => {
-  return useContext(AuthContext);
+export const useAuthContext = (): AuthContextType => {
+  const context = useContext(AuthContext);
+  if (context === undefined) {
+    throw new Error("useAuthContext must be used within AuthContextProvider");
+  }
+  return context;
 };

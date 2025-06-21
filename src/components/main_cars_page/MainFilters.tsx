@@ -1,4 +1,4 @@
-import React, { RefObject, useState } from "react";
+import React, { useState } from "react";
 import { TfiReload } from "react-icons/tfi";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { Button } from "../ui/button";
@@ -7,7 +7,7 @@ import { useSearchParams } from "react-router";
 
 const MainFilters = ({ onCloseFilters }: { onCloseFilters: () => void }) => {
   const [formKey, setFormKey] = useState(0);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [, setSearchParams] = useSearchParams();
 
   const submitFiltersHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import IconButton from "../global/IconButton";
 import { MdFilterListAlt } from "react-icons/md";
 import Select from "react-select";
@@ -7,6 +6,12 @@ import { IoGrid } from "react-icons/io5";
 import { IoIosList } from "react-icons/io";
 import { Button } from "../ui/button";
 import { useSearchParams } from "react-router";
+
+type SortOption = {
+  label: string;
+  value: string;
+  order: string;
+};
 
 const MainCarsHeader = ({
   totalCount,
@@ -21,15 +26,6 @@ const MainCarsHeader = ({
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  function sortCarsHandler(name: {
-    label: string;
-    value: string;
-    order: string;
-  }) {
-    searchParams.set("sortBy", name.value);
-    searchParams.set("sortOrder", name.order);
-    setSearchParams(searchParams);
-  }
   return (
     <div className=" p-4 bg-white rounded-sm shadow-sm flex items-center justify-between">
       <div className="flex items-center gap-x-2">
@@ -50,8 +46,8 @@ const MainCarsHeader = ({
       <div className=" flex items-center gap-x-6">
         <div className=" flex items-center gap-x-2">
           <Label>Sortiraj po:</Label>
-          <Select
-            defaultValue={{ label: "najnoviji", value: "najnoviji" }}
+          <Select<SortOption, false>
+            defaultValue={{ label: "najnoviji", value: "year", order: "desc" }}
             className="basic-single z-20"
             name="sortBy"
             options={[
@@ -60,7 +56,13 @@ const MainCarsHeader = ({
               { label: "najjeftiniji", value: "price", order: "asc" },
               { label: "najskuplji", value: "price", order: "desc" },
             ]}
-            onChange={sortCarsHandler}
+            onChange={(option) => {
+              if (option) {
+                searchParams.set("sortBy", option.value);
+                searchParams.set("sortOrder", option.order);
+                setSearchParams(searchParams);
+              }
+            }}
           />
         </div>
         <div className="flex">

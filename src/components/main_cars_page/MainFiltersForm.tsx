@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, type RefObject } from "react";
+import React, { useState, useEffect } from "react";
 import { Accordion } from "@/components/ui/accordion";
 import { Button } from "../ui/button";
 import FiltersAccordionSection from "./FiltersAccordionSection";
@@ -12,8 +12,6 @@ import { cities, seats } from "@/lib/utils";
 import { Checkbox } from "../ui/checkbox";
 import { carTypeData, colors } from "@/lib/utils";
 import { useLoaderData } from "react-router";
-import { TfiReload } from "react-icons/tfi";
-import { MdKeyboardArrowLeft } from "react-icons/md";
 
 type SelectOptionType = {
   label: string;
@@ -87,18 +85,20 @@ const MainFiltersForm = ({
         selectedBrandIds.has(model.brandId!)
       );
 
-      setDepSelectInputs((prev) => ({
+      setDepSelectInputs({
         model: updatedSelectedModels,
         brand: selected,
-      }));
+      });
     }
   };
 
   let updatedDepSelectInputs = groupedModelsBrands?.data.data;
   if (depSelectInputs.brand.length > 0) {
-    updatedDepSelectInputs = groupedModelsBrands?.data.data.filter((item) => {
-      return depSelectInputs.brand.some((brand) => brand.value === item._id);
-    });
+    updatedDepSelectInputs = groupedModelsBrands?.data.data.filter(
+      (item: BrandWithModelsType) => {
+        return depSelectInputs.brand.some((brand) => brand.value === item._id);
+      }
+    );
   }
 
   useEffect(() => {
