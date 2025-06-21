@@ -4,7 +4,7 @@ import { Button } from "../ui/button";
 
 const CarComparationHeader = ({ carsData }: { carsData: any }) => {
   return (
-    <header className=" mt-4  grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-3 md:gap-x-5">
+    <header className=" mt-4   grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-3 md:gap-x-5">
       <div className="hidden lg:block p-6 shadow-md rounded-md">
         <h2 className=" font-semibold text-xl md:text-2xl">
           Reklamiraj se na AutoPlacu
@@ -18,6 +18,7 @@ const CarComparationHeader = ({ carsData }: { carsData: any }) => {
           Kontaktirajte nas
         </Button>
       </div>
+
       {carsData.map((car: any) => {
         const {
           basicInfo: {
@@ -29,11 +30,16 @@ const CarComparationHeader = ({ carsData }: { carsData: any }) => {
         } = car;
         return (
           <div
-            className={`   rounded-md overflow-hidden  ${
+            className={`   rounded-md   ${
               carsData.length > 2 && "last:hidden"
             } lg:last:block`}
           >
-            <img src={car.images[0]} className="w-full h-[70%] object-cover " />
+            <div className=" rounded-t-md overflow-hidden w-full h-[70%]">
+              <img
+                src={car.images[0]}
+                className="w-full h-full object-cover "
+              />
+            </div>
             <div className=" bg-gray-50 py-3 px-5">
               <h2 className=" font-semibold text-xl lg:text-2xl">
                 {brandName} {modelName}

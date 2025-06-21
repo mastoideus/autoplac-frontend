@@ -65,7 +65,7 @@ const MainCarsHeader = ({
             }}
           />
         </div>
-        <div className="flex">
+        <div className=" hidden  md:flex">
           <Button
             onClick={() => onSetLayout("grid")}
             variant="outline"

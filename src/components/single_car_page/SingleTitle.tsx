@@ -63,7 +63,7 @@ const SingleTitle = ({
           </IconButton>
         </div>
       </div>
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col items-start sm:flex-row sm:items-center sm:justify-between">
         <p className=" text-xl lg:text-2xl font-semibold">{price} KM</p>
         <div className="flex gap-x-2">
           <p className="flex items-center text-sm gap-x-1 p-1 rounded-sm text-gray-500 border-2 border-gray-200">

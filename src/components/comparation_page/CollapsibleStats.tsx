@@ -58,7 +58,7 @@ const CollapsibleStats = ({
     >
       <header
         className={cn(
-          "flex items-center justify-between pt-2",
+          "flex items-center   px-5  md:px-0 justify-between pt-2",
           headerClassName
         )}
       >

@@ -21,11 +21,11 @@ const MainCars = ({ cars, currentPage, totalCount, pages }: MainCarsProps) => {
   const [showFilters, setShowFilters] = useState(true);
 
   return (
-    <div className="flex items-start gap-x-8 p-6 bg-gray-50 transition-all duration-300">
+    <div className=" pt-4 px-1 md:flex md:items-start md:gap-x-8 md:p-6 bg-gray-50 transition-all duration-300">
       <aside
-        className={` sticky top-[114px]  transition-all duration-500 ease-in-out  bg-white rounded-sm shadow-sm ${
+        className={` absolute  z-50 md:sticky md:top-[114px] md:z-0  transition-all duration-500 ease-in-out  bg-white rounded-sm shadow-sm ${
           showFilters
-            ? "w-80 opacity-100 translate-x-0"
+            ? "w-full md:w-80 opacity-100 translate-x-0 "
             : "w-0 opacity-0 -translate-x-full pointer-events-none"
         }`}
       >
