@@ -180,7 +180,7 @@ const CarComparationPage = () => {
           {transformedData.map((car: any) => {
             return (
               <GridCol carsLength={carsData.length}>
-                {Object.entries(car.mechanics).map(([key, value], index) => {
+                {Object.entries(car.mechanics).map(([, value], index) => {
                   return (
                     <GridRow
                       className={`${
@@ -217,7 +217,7 @@ const CarComparationPage = () => {
           {transformedData.map((car: any) => {
             return (
               <GridCol carsLength={carsData.length}>
-                {Object.entries(car.appearance).map(([key, value], index) => {
+                {Object.entries(car.appearance).map(([, value], index) => {
                   return (
                     <GridRow
                       className={`${
@@ -254,7 +254,7 @@ const CarComparationPage = () => {
           {transformedData.map((car: any) => {
             return (
               <GridCol carsLength={carsData.length}>
-                {Object.entries(car.features).map(([key, value], index) => {
+                {Object.entries(car.features).map(([, value], index) => {
                   return (
                     <GridRow
                       className={`${

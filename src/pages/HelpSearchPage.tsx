@@ -31,11 +31,7 @@ const HelpSearchPage = () => {
     city: [],
   });
 
-  const {
-    data: responseData,
-    isLoading,
-    isError,
-  } = useQuery({
+  const { data: responseData } = useQuery({
     queryKey: ["brands-stores"],
     queryFn: () => customFetch("/api/brands-stores"),
   });
