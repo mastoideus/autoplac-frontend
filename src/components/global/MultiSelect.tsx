@@ -48,6 +48,10 @@ const MultiSelect = ({
             ...base,
             fontSize: "0.875rem",
           }),
+          menuPortal: (base) => ({
+            ...base,
+            zIndex: 9999, // important for mobile
+          }),
         }}
       />
     </div>
