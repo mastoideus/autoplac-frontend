@@ -5,7 +5,6 @@ import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router";
 import { useMutation } from "@tanstack/react-query";
 import customFetch from "@/axios";
-import Spinner from "../global/LoadingSpinner";
 import { useNavigate } from "react-router";
 import { useAuthContext } from "@/lib/context/authContext";
 
@@ -26,13 +25,6 @@ const UserBar = () => {
     logoutMutate();
   }
 
-  /*if (isLoading) {
-    return (
-      <div className=" h-screen flex items-center justify-center">
-        <Spinner />
-      </div>
-    );
-  }*/
   return (
     <div className=" flex items-center gap-x-6">
       <Link to="/" className=" relative">
