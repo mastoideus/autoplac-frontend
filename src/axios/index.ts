@@ -1,7 +1,7 @@
 import axios, { type AxiosInstance } from "axios";
 
 const customFetch: AxiosInstance = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://autoplac-backend.onrender.com",
 });
 
 export default customFetch;
