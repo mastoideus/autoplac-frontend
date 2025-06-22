@@ -224,3 +224,29 @@ export interface CarsResponse {
   currentPage: number;
   hasMore: boolean;
 }
+
+import { FaCar } from "react-icons/fa6";
+import { HiSpeakerphone } from "react-icons/hi";
+import { IoMdStats } from "react-icons/io";
+import { MdPayments } from "react-icons/md";
+import { BsHouseGearFill } from "react-icons/bs";
+import { PiCurrencyCircleDollarFill } from "react-icons/pi";
+import { PiCurrencyCircleDollarLight } from "react-icons/pi";
+import { FiSettings } from "react-icons/fi";
+import type { IconType } from "react-icons";
+
+type DropdownLink = {
+  id: number;
+  text: string;
+  icon: IconType;
+};
+export const dropdownUserLinks: DropdownLink[] = [
+  { id: 1, text: "moja vozila", icon: FaCar },
+  { id: 2, text: "kampanje", icon: HiSpeakerphone },
+  { id: 3, text: "statistika", icon: IoMdStats },
+  { id: 4, text: "uplate kredita", icon: MdPayments },
+  { id: 5, text: "uplate tokena", icon: BsHouseGearFill },
+  { id: 6, text: "dopuna kredita", icon: PiCurrencyCircleDollarFill },
+  { id: 7, text: "dopuna tokena", icon: PiCurrencyCircleDollarLight },
+  { id: 8, text: "postavke", icon: FiSettings },
+];

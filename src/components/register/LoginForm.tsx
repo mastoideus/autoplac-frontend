@@ -13,6 +13,7 @@ import { toast } from "sonner";
 import { useMutation } from "@tanstack/react-query";
 import customFetch from "@/axios";
 import { useAuthContext } from "@/lib/context/authContext";
+import Spinner from "../global/LoadingSpinner";
 
 type FormDataObject = {
   password: string;
@@ -28,12 +29,12 @@ const LoginForm = () => {
 
   const hasShownToast = useRef(false);
 
-  const { mutate } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: (data: FormDataObject) =>
       customFetch.post("/api/auth/login", data, { withCredentials: true }),
     onSuccess: (response) => {
       console.log(response?.data);
-      toast.success("Logged in successfully!");
+      toast.success("Uspješno ste prijavljeni!");
       loginHandler({
         userData: response.data.user,
         accessToken: response.data.accessToken,
@@ -151,7 +152,7 @@ const LoginForm = () => {
         </div>
         <div className=" mb-2">
           <Button className=" w-full h-12 bg-blue-900 text-white">
-            Prijava
+            {isPending ? <Spinner /> : "Prijava"}
           </Button>
           <div className=" flex items-center gap-x-2 my-5">
             <Separator className=" flex-1" />

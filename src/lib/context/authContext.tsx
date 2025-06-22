@@ -1,5 +1,4 @@
 import { createContext, useState, useContext, useEffect } from "react";
-import { useQuery } from "@tanstack/react-query";
 import customFetch from "@/axios";
 
 export const setUserDataToLocalStorage = (userData: any) => {
@@ -11,6 +10,10 @@ const getUserDataFromLocalStorage = () => {
   return userData;
 };
 
+const removeUserDataFromLocalStorage = () => {
+  localStorage.removeItem("userData");
+};
+
 type UserDataType = {
   [key: string]: any;
 };
@@ -20,12 +23,11 @@ type AuthContextType = {
     userData: UserDataType | null;
     accessToken: string;
   };
-  isAuthTokenError: boolean;
-  isAuthTokenLoading: boolean;
   loginHandler: (authData: {
     userData: UserDataType;
     accessToken: string;
   }) => void;
+  logoutHandler: () => void;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -40,34 +42,28 @@ export const AuthContextProvider = ({
     accessToken: "",
   });
 
-  const {
-    isLoading: isAuthTokenLoading,
-    isError: isAuthTokenError,
-    data,
-    isSuccess,
-  } = useQuery({
-    queryKey: ["refresh-token"],
-    queryFn: () => customFetch("/api/auth/refresh", { withCredentials: true }),
-    enabled: !authData.accessToken,
-    retry: false,
-  });
-
   useEffect(() => {
-    if (isSuccess && data?.data?.accessToken) {
-      console.log("refresh token generated new access token on app load");
-      setAuthData((prevState) => ({
-        ...prevState,
-        accessToken: data.data.accessToken,
-      }));
-    }
-    if (isAuthTokenError) {
-      setAuthData({
-        userData: null,
-        accessToken: "",
-      });
-      localStorage.removeItem("userData");
-    }
-  }, [isAuthTokenError, isAuthTokenLoading, data]);
+    const generateNewToken = async () => {
+      console.log("new token being generated");
+      try {
+        const response = await customFetch("/api/auth/refresh", {
+          withCredentials: true,
+        });
+        if (response?.data) {
+          setAuthData((prevState) => {
+            return {
+              ...prevState,
+              accessToken: response?.data.accessToken,
+            };
+          });
+        }
+      } catch (error) {
+        removeUserDataFromLocalStorage();
+        setAuthData({ userData: null, accessToken: "" });
+      }
+    };
+    generateNewToken();
+  }, []);
 
   const loginHandler = (authData: any) => {
     const { userData, accessToken } = authData;
@@ -78,9 +74,21 @@ export const AuthContextProvider = ({
     });
   };
 
+  const logoutHandler = () => {
+    removeUserDataFromLocalStorage();
+    setAuthData({
+      userData: null,
+      accessToken: "",
+    });
+  };
+
   return (
     <AuthContext.Provider
-      value={{ authData, isAuthTokenError, isAuthTokenLoading, loginHandler }}
+      value={{
+        authData,
+        loginHandler,
+        logoutHandler,
+      }}
     >
       {children}
     </AuthContext.Provider>

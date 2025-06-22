@@ -12,7 +12,7 @@ const Hero = () => {
   const { elementRef } = useShowOnScrollContext();
 
   return (
-    <div className=" page_layout flex flex-col md:flex-row md:gap-x-16">
+    <div className=" mt-20 md:mt-0 page_layout flex flex-col md:flex-row md:gap-x-16">
       <section className="">
         <h2 className="  font-[600] text-4xl lg:text-6xl lg:leading-[75px] max-w-[600px] -mt-12 md:mt-9">
           Kupi ili prodaj, dok kažeš Plac!
