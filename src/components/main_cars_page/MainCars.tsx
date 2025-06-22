@@ -7,6 +7,7 @@ import MainCarsList from "./MainCarsList";
 import CarListCard from "./CarListCard";
 import Pagination from "../global/Pagination";
 import NoResultsSVG from "./NoResultsSVG";
+import { cn } from "@/lib/utils";
 
 interface MainCarsProps {
   cars: Car[];
@@ -23,13 +24,16 @@ const MainCars = ({ cars, currentPage, totalCount, pages }: MainCarsProps) => {
   return (
     <div className=" pt-4 px-1 md:flex md:items-start md:gap-x-8 md:p-6 bg-gray-50 transition-all duration-300">
       <aside
-        className={` absolute  z-50 md:sticky md:top-[114px] md:z-0  transition-all duration-500 ease-in-out  bg-white rounded-sm shadow-sm ${
+        className={cn(
+          "fixed z-50 md:sticky md:top-[114px] md:z-0 transition-all duration-500 ease-in-out bg-white rounded-sm shadow-sm",
           showFilters
-            ? "w-full md:w-80 opacity-100 translate-x-0 "
-            : "w-0 opacity-0 -translate-x-full pointer-events-none"
-        }`}
+            ? "w-0 -translate-x-[100%] opacity-0 pointer-events-none md:w-80 md:opacity-100 md:translate-x-0 md:pointer-events-auto"
+            : "w-full translate-x-0 opacity-100 pointer-events-auto md:w-0 md:opacity-0 md:-translate-x-full md:pointer-events-none"
+        )}
       >
-        <MainFilters onCloseFilters={() => setShowFilters(false)} />
+        <MainFilters
+          onCloseFilters={() => setShowFilters((prevState) => !prevState)}
+        />
       </aside>
 
       <main className="flex-1  ">

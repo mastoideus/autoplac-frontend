@@ -27,7 +27,7 @@ const MainCarsHeader = ({
   const [searchParams, setSearchParams] = useSearchParams();
 
   return (
-    <div className=" p-4 bg-white rounded-sm shadow-sm flex items-center justify-between">
+    <div className=" p-4 bg-white rounded-sm shadow-sm flex flex-col md:flex-row md:items-center md:justify-between">
       <div className="flex items-center gap-x-2">
         <h2 className=" text-xl font-semibold">
           Pronađeno {totalCount} vozila
